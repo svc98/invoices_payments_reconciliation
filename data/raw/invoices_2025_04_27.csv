@@ -1,0 +1,201 @@
+invoice_id,customer_id,first_name,last_name,customer_email,customer_address,invoice_type,invoice_date,due_date,amount_due,currency,status
+INV-1-ebe87e50-2383-11f0-bd9f-7a151d959370,f0970655-05e1-4ba1-a123-684ad25e6272,David,Willis,DavidW@outlook.com,"72170 Justin Coves Suite 976
+Jordanview, PW 99150",Onboarding,2025-04-14,2025-05-14,4623.21,USD,Posted
+INV-2-ebe88a30-2383-11f0-bd9f-7a151d959370,cbafaf24-6545-478c-8cf9-1d0dd5d617f9,Daniel,Nichols,DanielN@gmail.com,"602 Le Rest Apt. 923
+North Laurenburgh, LA 13036",Maintenance,2025-04-12,2025-05-12,3131.73,USD,Posted
+INV-3-ebe8932c-2383-11f0-bd9f-7a151d959370,f7d32681-3806-4dab-8b6a-8c3ed6c70240,Christopher,Wilson,ChristopherW@outlook.com,"8805 Regina Valley
+Bautistafurt, PW 75762",Onboarding,2025-04-11,2025-05-11,4056.43,USD,Processing
+INV-4-ebe8a3da-2383-11f0-bd9f-7a151d959370,cfd888a9-56ec-44a5-b6b9-60c8a2eca30f,Jillian,Davis,JillianD@yahoo.com,"387 Paige Inlet
+Greerbury, MD 79652",Product,2025-04-18,2025-05-18,842.13,USD,Processing
+INV-5-ebe8b474-2383-11f0-bd9f-7a151d959370,4a472dba-4725-43e0-a06f-b14740dfde4b,Sandra,Carter,SandraC@outlook.com,"74854 Alex Freeway Apt. 856
+Port Travis, NY 63790",Maintenance,2025-04-01,2025-05-01,3278.8,USD,Posted
+INV-6-ebe8be4c-2383-11f0-bd9f-7a151d959370,b59ac9b3-e23b-4989-a129-1d87a941dbf6,Janet,Ortiz,JanetO@outlook.com,"4828 Shah Cape Suite 351
+New Michaelbury, NH 69165",Product,2025-03-24,2025-04-23,1281.38,USD,Late
+INV-7-ebe8ca68-2383-11f0-bd9f-7a151d959370,c580671c-a4c5-42be-b202-8bae2443e495,Megan,Pennington,MeganP@yahoo.com,"0649 Jose Plain Suite 092
+New Thomasborough, NV 96943",Consulting,2025-04-19,2025-05-19,1089.6,USD,Posted
+INV-8-ebe8da4e-2383-11f0-bd9f-7a151d959370,0af1e57d-eb18-4df8-a892-2df767c2dcfe,Stefanie,Hood,StefanieH@gmail.com,"100 Erin Lights Apt. 121
+Port Danielview, AS 12855",Subscription,2025-04-11,2025-05-11,4293.68,USD,Posted
+INV-9-ebe8e94e-2383-11f0-bd9f-7a151d959370,786d91f9-6d1e-4767-aa76-7e8a3d451a39,Jeffrey,Smith,JeffreyS@yahoo.com,"26355 Justin Inlet
+Raymouth, CT 72391",Subscription,2025-03-23,2025-04-22,591.94,USD,Late
+INV-10-ebe8f484-2383-11f0-bd9f-7a151d959370,3ff8767a-46bf-4c44-9bf4-572b52bea757,Melissa,Williams,MelissaW@yahoo.com,"473 Flores Ports
+South Kristine, CO 85856",Consulting,2025-04-10,2025-05-10,4480.19,USD,Posted
+INV-11-ebe90316-2383-11f0-bd9f-7a151d959370,c4cd38a2-32cb-4eea-9386-7ba40fa4e7a9,Sarah,Castro,SarahC@gmail.com,"446 Marquez Drive Apt. 358
+West Tracie, FL 91951",Product,2025-04-09,2025-05-09,1421.38,USD,Posted
+INV-12-ebe90c30-2383-11f0-bd9f-7a151d959370,481424d8-7e56-4c59-b44e-934577205e04,Nicole,Stone,NicoleS@outlook.com,"USNV Barnett
+FPO AE 53604",Consulting,2025-04-19,2025-05-19,1328.39,USD,Pending
+INV-13-ebe915ae-2383-11f0-bd9f-7a151d959370,9771ad25-87e9-4b9d-a4f9-a541498df088,Victoria,Martin,VictoriaM@gmail.com,"440 Caldwell Motorway
+Kochfort, AL 47783",Consulting,2025-03-23,2025-04-22,1540.53,USD,Late
+INV-14-ebe92260-2383-11f0-bd9f-7a151d959370,e7c9a3f8-02d8-4a3f-8ac9-9cb3ecf57bda,Nancy,Boyer,NancyB@yahoo.com,"0007 Smith Meadows Apt. 598
+Evanschester, OH 66015",Consulting,2025-03-25,2025-04-24,3363.34,USD,Late
+INV-15-ebe92d3c-2383-11f0-bd9f-7a151d959370,ddb5da9f-11a5-403b-b60e-98912a3141cc,Joseph,Snyder,JosephS@yahoo.com,"9155 Long Mill Suite 801
+Lake Jamesview, MI 73643",Consulting,2025-04-06,2025-05-06,,USD,Posted
+INV-16-ebe93746-2383-11f0-bd9f-7a151d959370,3122bb3a-dfdf-4034-a76e-49aee943de79,Latoya,Williams,LatoyaW@outlook.com,"01889 Clark Plains
+South Christianland, FL 57644",Consulting,2025-03-23,2025-04-22,1041.18,USD,Late
+INV-17-ebe94254-2383-11f0-bd9f-7a151d959370,870fb99d-a552-4dd6-a9eb-fa889549f531,Michelle,Gonzales,MichelleG@outlook.com,"48286 Johnston Fields
+Lake Alexisport, WI 85127",Subscription,2025-04-19,2025-05-19,2110.45,USD,Posted
+INV-18-ebe94ce0-2383-11f0-bd9f-7a151d959370,48fc5522-3487-44e4-a8b5-8be15a3a5c9f,Emily,Mcgrath,EmilyM@yahoo.com,"6737 April Plaza
+Patrickmouth, PW 82329",Subscription,2025-03-29,2025-04-28,2833.0,USD,Posted
+INV-19-ebe9582a-2383-11f0-bd9f-7a151d959370,30330028-f6d6-4727-9321-237e74b0dd64,David,Harris,DavidH@outlook.com,"135 Davis Crossroad Apt. 620
+East Anthony, OH 08509",Consulting,2025-03-27,2025-04-26,3634.52,USD,Late
+INV-20-ebe96504-2383-11f0-bd9f-7a151d959370,e45691c6-59f2-4440-b35e-bbbf1118a1a1,Makayla,Hughes,MakaylaH@outlook.com,"074 Jennifer Land Apt. 994
+Johnsonfort, NE 07044",Consulting,2025-04-11,2025-05-11,1403.32,USD,Processing
+INV-21-ebe970bc-2383-11f0-bd9f-7a151d959370,66fc8648-95ee-4782-9639-5576df24a0df,Jesus,Nichols,JesusN@gmail.com,"9753 Steven Streets Apt. 924
+Harrisville, PR 09983",Product,2025-03-29,2025-04-28,4103.12,USD,Posted
+INV-22-ebe97e7c-2383-11f0-bd9f-7a151d959370,921a15d0-2887-4ef9-b200-b8197d1271e8,Michael,Williams,MichaelW@gmail.com,"PSC 2285, Box 0545
+APO AP 91066",Consulting,2025-04-08,2025-05-08,989.51,USD,Canceled
+INV-23-ebe987b4-2383-11f0-bd9f-7a151d959370,28bb84ad-6c77-4223-84d5-bb40a4684b2b,Nicole,Thomas,NicoleT@gmail.com,"363 Evans Plaza
+Smallfurt, MA 69386",Product,2025-04-11,2025-05-11,3633.95,USD,Posted
+INV-24-ebe994a2-2383-11f0-bd9f-7a151d959370,769e5eaa-bef4-44b4-8832-27cb92895558,Laura,Watson,LauraW@outlook.com,"331 Todd Prairie Apt. 144
+Morganport, TN 88339",Training,2025-03-29,2025-04-28,792.32,USD,Posted
+INV-24-ebe994a2-2383-11f0-bd9f-7a151d959370,769e5eaa-bef4-44b4-8832-27cb92895558,Laura,Watson,LauraW@outlook.com,"331 Todd Prairie Apt. 144
+Morganport, TN 88339",Training,2025-03-29,2025-04-28,792.32,USD,Posted
+INV-26-ebe9a136-2383-11f0-bd9f-7a151d959370,593200ef-a052-426c-bc74-2c4f166093e1,Debra,Butler,DebraB@gmail.com,"7604 Christine Springs
+Mirandaside, HI 20844",Product,2025-04-08,2025-05-08,3728.9,USD,Posted
+INV-27-ebe9ac26-2383-11f0-bd9f-7a151d959370,2e7f9def-bac0-469f-bc66-c44fa603e703,Kevin,Benson,KevinB@gmail.com,"22684 John Unions Apt. 272
+North Danielle, AS 80006",Subscription,2025-03-30,2025-04-29,1467.26,USD,Posted
+INV-28-ebe9b4b4-2383-11f0-bd9f-7a151d959370,2de2ca2d-31ea-4a1b-91c6-dcbc25edf9e6,Catherine,Olson,CatherineO@yahoo.com,"3492 Kelly Bridge Apt. 567
+East Michaelborough, AL 69616",Consulting,2025-04-19,2025-05-19,2148.21,USD,Posted
+INV-29-ebe9bff4-2383-11f0-bd9f-7a151d959370,399077f0-5aaf-4964-aa79-307b1daa111a,Andrew,Collins,AndrewC@outlook.com,"76414 Laura Circle Apt. 849
+Johnsonport, AL 07959",Subscription,2025-03-28,2025-04-27,4773.9,USD,Posted
+INV-30-ebe9c968-2383-11f0-bd9f-7a151d959370,f6419796-a112-4d1b-9912-f506e2c3d1e2,Christina,Wallace,ChristinaW@gmail.com,"305 Velez Street
+New Randy, SD 28477",Product,2025-03-25,2025-04-24,554.98,USD,Late
+INV-31-ebe9d854-2383-11f0-bd9f-7a151d959370,228b07d4-352a-42e6-8ab5-6f4bce2d6672,Ryan,Bowman,RyanB@outlook.com,"PSC 5549, Box 8092
+APO AP 57605",Product,2025-04-17,2025-05-17,2394.88,USD,Posted
+INV-32-ebe9e326-2383-11f0-bd9f-7a151d959370,aa4069a8-0966-4cf7-826a-2e57d8f8831f,William,Maldonado,WilliamM@outlook.com,"8390 Delgado Vista Suite 935
+New Angelicaville, DE 19080",Consulting,2025-04-01,2025-05-01,2840.18,USD,Posted
+INV-33-ebe9efa6-2383-11f0-bd9f-7a151d959370,598f4217-df12-4f62-8207-35f7e5106d3d,Nicholas,Johnson,NicholasJ@gmail.com,"93677 Frank Stravenue Suite 874
+East Jessemouth, FL 16734",Training,2025-04-09,2025-05-09,4614.56,USD,Processing
+INV-34-ebe9fb2c-2383-11f0-bd9f-7a151d959370,dd071928-fd4c-40b8-8458-3c614f859d89,Trevor,Peterson,TrevorP@outlook.com,"803 Diana Lodge
+Patrickfurt, OR 05916",Consulting,2025-04-04,2025-05-04,4514.49,USD,Posted
+INV-35-ebea0bb2-2383-11f0-bd9f-7a151d959370,d1536c5b-91bb-44b8-a629-c5ce4268de31,Jason,Khan,JasonK@outlook.com,"5354 Coleman Skyway
+Port Shelbymouth, CT 28788",Product,2025-04-17,2025-05-17,4011.27,USD,Processing
+INV-36-ebea1ada-2383-11f0-bd9f-7a151d959370,df9ca5f5-6c4e-49d0-8b70-12aa31782e94,Tabitha,Mcguire,TabithaM@yahoo.com,"553 Kristi Drives
+Port Richard, KS 33275",Subscription,2025-03-25,2025-04-24,1186.98,USD,Late
+INV-37-ebea232c-2383-11f0-bd9f-7a151d959370,853b1124-6be7-47ae-b3bc-dc778863b2fa,Charles,Jones,CharlesJ@yahoo.com,"5835 Michelle Dam Apt. 049
+East Erictown, CT 81677",Product,2025-04-02,2025-05-02,899.23,USD,Posted
+INV-38-ebea3056-2383-11f0-bd9f-7a151d959370,5a18f617-1196-443c-a263-3d4911bb2b4c,Sarah,Houston,SarahH@outlook.com,"3720 Perez Ridges Suite 629
+Davisshire, ND 33159",Product,2025-04-01,2025-05-01,544.42,USD,Processing
+INV-39-ebea40a0-2383-11f0-bd9f-7a151d959370,82a8f180-c797-4081-8b8e-ebc9750b5363,Lisa,Wolf,LisaW@yahoo.com,"1916 Snyder Shore
+Port Joel, MD 41995",Product,2025-04-08,2025-05-08,2761.28,USD,Processing
+INV-40-ebea4c12-2383-11f0-bd9f-7a151d959370,142a1dd2-8433-47ce-a8cd-f22c818070d5,Kelli,Little,KelliL@yahoo.com,"745 Craig Throughway
+South Jonathanstad, MS 57196",Product,2025-03-26,2025-04-25,2301.28,USD,Late
+INV-41-ebea54fa-2383-11f0-bd9f-7a151d959370,87c4c313-7541-456d-a6e8-fbd016e0c178,Nicholas,Woodard,NicholasW@outlook.com,"8222 Jacobs Rapid Apt. 800
+Port Christophermouth, SC 35271",Consulting,2025-04-07,2025-05-07,4648.27,USD,Posted
+INV-42-ebea5da6-2383-11f0-bd9f-7a151d959370,6a613fd4-a64f-42d8-b6ab-d3d0a8837fde,James,Garcia,JamesG@gmail.com,"228 Gary Lane Suite 234
+West Jennifer, UT 22887",Consulting,2025-03-26,2025-04-25,724.65,USD,Late
+INV-43-ebea65bc-2383-11f0-bd9f-7a151d959370,1b579701-10e0-4140-93aa-e1e081e99d93,Christina,Steele,ChristinaS@gmail.com,"322 Anne Radial
+North Philiptown, DC 21671",Product,2025-04-11,2025-05-11,1123.73,USD,Posted
+INV-44-ebea6e54-2383-11f0-bd9f-7a151d959370,6842df02-7bcd-4b65-b2c9-0e4ddcb3a36d,Ryan,Lee,RyanL@gmail.com,"85361 Sarah Brooks
+East Michelle, NY 99060",Maintenance,2025-04-17,2025-05-17,3625.19,USD,Posted
+INV-45-ebea7638-2383-11f0-bd9f-7a151d959370,af3237f9-6c1b-445d-b70b-c087238a28b7,Lindsay,Guzman,LindsayG@outlook.com,"2102 Small Passage Apt. 533
+Amyfort, TX 51093",Subscription,2025-03-29,2025-04-28,2061.31,USD,Posted
+INV-46-ebea8290-2383-11f0-bd9f-7a151d959370,188baacc-d03d-4ab6-81cc-1c1a1e83e614,Traci,Rodriguez,TraciR@yahoo.com,"5897 William Cape
+Hunterburgh, SC 13512",Consulting,2025-03-26,2025-04-25,1899.88,USD,Late
+INV-47-ebea9122-2383-11f0-bd9f-7a151d959370,6dbab71f-c4f6-4c4e-bd89-18a7218a8308,Jennifer,Robinson,JenniferR@outlook.com,"358 Anita Row
+South Cristinaside, ME 42077",Onboarding,2025-04-14,2025-05-14,2692.93,USD,Posted
+INV-48-ebeaa1d0-2383-11f0-bd9f-7a151d959370,950dbba3-23e6-4639-a9c5-d0690b4344a9,Leslie,Cunningham,LeslieC@gmail.com,"9127 Mary Haven
+Hillhaven, MD 08394",Subscription,2025-04-15,2025-05-15,3815.96,USD,Posted
+INV-49-ebeaaf0e-2383-11f0-bd9f-7a151d959370,dc79660f-aedd-4ebd-88f1-80a4a3897b60,Mary,Alexander,MaryA@gmail.com,"710 Kylie Tunnel Apt. 037
+Morganfort, OH 45270",Consulting,2025-03-28,2025-04-27,2332.75,USD,Posted
+INV-50-ebeaba80-2383-11f0-bd9f-7a151d959370,862e6124-ab54-4542-94cd-4c6d557b87ec,Nathaniel,Pearson,NathanielP@yahoo.com,"Unit 4899 Box 2842
+DPO AP 16330",Training,2025-03-28,2025-04-27,392.45,USD,Posted
+INV-51-ebeabfee-2383-11f0-bd9f-7a151d959370,b5d3443d-940a-43eb-a7f9-0b91b2f8c6fc,Tamara,Pugh,TamaraP@gmail.com,"14755 Joseph Neck
+Lake Ian, MP 28868",Subscription,2025-04-01,2025-05-01,2508.91,USD,Processing
+INV-52-ebeac8a4-2383-11f0-bd9f-7a151d959370,969e3a7b-7e9a-458b-a1fd-c03c07b4c058,Megan,Thomas,MeganT@gmail.com,"Unit 0745 Box 3241
+DPO AP 70566",Subscription,2025-04-16,2025-05-16,4678.99,USD,Posted
+INV-53-ebeacde0-2383-11f0-bd9f-7a151d959370,796db1ad-7417-4b7e-a544-0b95ebc19f35,David,Butler,DavidB@outlook.com,"0475 Williams Ramp Apt. 613
+Franktown, IL 79353",Product,2025-04-01,2025-05-01,4501.5,USD,Posted
+INV-54-ebead9fc-2383-11f0-bd9f-7a151d959370,7cc8d0e5-eede-4f50-b6ea-c123908a2a09,Michael,Small,MichaelS@outlook.com,"5670 Brown Extension
+East Christopherbury, ME 40083",Subscription,2025-04-06,2025-05-06,3944.24,USD,Posted
+INV-55-ebeae3e8-2383-11f0-bd9f-7a151d959370,73013872-d54c-4a7b-a749-22ef48a38a37,Bobby,Hensley,BobbyH@gmail.com,"223 Allen Lock Apt. 868
+South Ericastad, FM 47871",Product,2025-03-27,2025-04-26,314.97,USD,Late
+INV-56-ebeaef96-2383-11f0-bd9f-7a151d959370,ebe01c00-e29a-4603-aaa4-0ee57367dc01,Linda,Nash,LindaN@gmail.com,"021 Ball Well
+Martinezbury, ND 34969",Product,2025-03-28,2025-04-27,216.5,USD,Posted
+INV-57-ebeaf95a-2383-11f0-bd9f-7a151d959370,036631b9-a1df-4847-aad0-2d9e32f889f0,Monique,Fernandez,MoniqueF@yahoo.com,"USS Jimenez
+FPO AA 89064",Consulting,2025-03-27,2025-04-26,2319.12,USD,Late
+INV-58-ebeb010c-2383-11f0-bd9f-7a151d959370,fa9b9ab4-d781-4122-8211-ed53e6f5ca14,Adam,Fuller,AdamF@gmail.com,"0679 Dean Roads Apt. 286
+Mullenside, CO 37933",Product,2025-04-16,2025-05-16,2575.97,USD,Posted
+INV-59-ebeb0d82-2383-11f0-bd9f-7a151d959370,e7940919-6d73-49ee-a6a0-52eebeb766c4,Dave,Miller,DaveM@gmail.com,"6136 Carroll Shoals
+New Angelafurt, VI 61029",Product,2025-04-13,2025-05-13,1390.91,USD,Posted
+INV-60-ebeb1732-2383-11f0-bd9f-7a151d959370,220f161c-f33c-4842-b594-f9e424fd5150,Karen,Henderson,KarenH@outlook.com,"08217 Steele Drive Suite 333
+Kimmouth, NH 02110",Onboarding,2025-04-09,2025-05-09,3609.55,USD,Posted
+INV-61-ebeb2236-2383-11f0-bd9f-7a151d959370,601ba084-1fde-4a80-8279-cbcb7cfec5d6,Amy,Rodriguez,AmyR@yahoo.com,"64445 Miller Ridge
+West Michelle, PA 52393",Training,2025-03-28,2025-04-27,4376.72,USD,Posted
+INV-62-ebeb2de4-2383-11f0-bd9f-7a151d959370,7f7d1e1b-a3e3-4e3d-b655-e827b190a6cf,Thomas,Mata,ThomasM@gmail.com,"0219 Stevens Crescent
+Gonzalesside, AL 03935",Subscription,2025-04-11,2025-05-11,1313.54,USD,Canceled
+INV-63-ebeb37ee-2383-11f0-bd9f-7a151d959370,5fd22e77-020b-45ab-abc9-dd66360fee18,Matthew,Bailey,MatthewB@gmail.com,"5240 Jacqueline Landing
+Anthonyton, MS 69249",Subscription,2025-03-30,2025-04-29,4316.32,USD,Processing
+INV-64-ebeb4298-2383-11f0-bd9f-7a151d959370,30e7b8cc-3777-4e10-91dc-5935f18dffc1,Christopher,Palmer,ChristopherP@yahoo.com,"802 Morales Pine
+Brewerburgh, AR 99313",Product,2025-04-07,2025-05-07,1578.28,USD,Processing
+INV-65-ebeb4dba-2383-11f0-bd9f-7a151d959370,2f25bf2f-c809-4617-bffa-fe1d8cd2f807,Nancy,Skinner,NancyS@gmail.com,"USNS Conway
+FPO AA 11889",Onboarding,2025-03-25,2025-04-24,3794.77,USD,Late
+INV-66-ebeb5634-2383-11f0-bd9f-7a151d959370,a2b04706-d1c4-47d8-a4b6-442262b332da,John,Joseph,JohnJ@gmail.com,"30182 Ferguson Landing Apt. 419
+Johnsontown, ID 45309",Product,2025-04-16,2025-05-16,4000.96,USD,Posted
+INV-67-ebeb637c-2383-11f0-bd9f-7a151d959370,7be3b54f-c59f-4ebb-9791-a4bcbadeff9c,Reginald,Casey,ReginaldC@outlook.com,"PSC 3141, Box 6091
+APO AP 16876",Consulting,2025-03-28,2025-04-27,1635.25,USD,Posted
+INV-68-ebeb694e-2383-11f0-bd9f-7a151d959370,dd19feff-f8d6-4f46-9319-60427d2c4b6f,Jose,Brown,JoseB@gmail.com,"949 Gregory Prairie Suite 625
+South Tom, DC 13798",Subscription,2025-04-08,2025-05-08,4279.61,USD,Posted
+INV-69-ebeb7ee8-2383-11f0-bd9f-7a151d959370,0347447b-aeae-4d2a-b587-e99b7133aacb,Nicole,Bishop,NicoleB@yahoo.com,"USNS Mcgrath
+FPO AA 01754",Product,2025-04-06,2025-05-06,1002.67,USD,Posted
+INV-70-ebeb8654-2383-11f0-bd9f-7a151d959370,976a4f53-b702-4fe6-ac84-7d13e8d9f34b,Stacey,Summers,StaceyS@yahoo.com,"52392 Justin Freeway
+Simsland, AK 25757",Subscription,2025-04-06,2025-05-06,,USD,Posted
+INV-71-ebeb928e-2383-11f0-bd9f-7a151d959370,accc93ca-91d6-4629-a5e9-a5d748f51769,Angela,Lee,AngelaL@gmail.com,"11267 Brown Fall Apt. 506
+Mezahaven, MS 74307",Consulting,2025-04-08,2025-05-08,350.41,USD,Posted
+INV-72-ebeb9ed2-2383-11f0-bd9f-7a151d959370,a55d76c5-63b8-48a4-b5c0-8eb005b451a5,Deanna,Wagner,DeannaW@gmail.com,"57736 Laura Springs Apt. 444
+West Roberttown, PW 18729",Consulting,2025-04-04,2025-05-04,3351.12,USD,Pending
+INV-73-ebeba9ae-2383-11f0-bd9f-7a151d959370,50948b61-b864-4f32-aa74-694252774e1f,Daniel,Watson,DanielW@yahoo.com,"50230 Jessica Canyon Suite 201
+Lake Christopherville, GU 18744",Subscription,2025-04-03,2025-05-03,2757.38,USD,Posted
+INV-74-ebebb534-2383-11f0-bd9f-7a151d959370,00a60283-831b-4d82-95f8-5fa40cf9feed,Melissa,Wong,MelissaW@yahoo.com,"510 Murphy Estate
+East William, VT 46392",Consulting,2025-03-27,2025-04-26,2974.69,USD,Late
+INV-75-ebebbfca-2383-11f0-bd9f-7a151d959370,78336ab8-eff6-4846-92d4-a3123c29b8fd,Alyssa,Hines,AlyssaH@outlook.com,"27210 Mccoy Hollow
+Katelynmouth, AR 07391",Product,2025-04-06,2025-05-06,3269.61,USD,Posted
+INV-76-ebebca06-2383-11f0-bd9f-7a151d959370,8b7020bc-8863-45f6-82c7-c877cea5753c,Kenneth,Hicks,KennethH@gmail.com,"990 Jones Port
+Stephenview, MN 35691",Consulting,2025-04-01,2025-05-01,2329.63,USD,Posted
+INV-77-ebebd438-2383-11f0-bd9f-7a151d959370,90e9a861-fdf5-4dcb-803a-1a4e1e9c915c,Lisa,Dunlap,LisaD@yahoo.com,"554 Smith Square
+West Robertshire, OK 56376",Product,2025-04-13,2025-05-13,3790.87,USD,Posted
+INV-78-ebebdf3c-2383-11f0-bd9f-7a151d959370,c33aa4b3-2f03-4a77-88d0-109d31f47557,Meghan,Lutz,MeghanL@yahoo.com,"Unit 1910 Box 3765
+DPO AP 93149",Subscription,2025-03-25,2025-04-24,4263.71,USD,Late
+INV-79-ebebe676-2383-11f0-bd9f-7a151d959370,2881615a-ed75-4982-9509-dee5b8e9f51f,Karen,Leonard,KarenL@yahoo.com,"66216 Rodriguez Causeway
+West Nancyton, SC 73184",Onboarding,2025-04-10,2025-05-10,1612.7,USD,Posted
+INV-80-ebebf01c-2383-11f0-bd9f-7a151d959370,ef6a210a-f50e-4242-82cd-ca09050306b4,Kathy,Anthony,KathyA@yahoo.com,"1918 Holly Curve Suite 239
+East Taylor, RI 53174",Subscription,2025-04-06,2025-05-06,1859.86,USD,Posted
+INV-80-ebebf01c-2383-11f0-bd9f-7a151d959370,ef6a210a-f50e-4242-82cd-ca09050306b4,Kathy,Anthony,KathyA@yahoo.com,"1918 Holly Curve Suite 239
+East Taylor, RI 53174",Subscription,2025-04-06,2025-05-06,1859.86,USD,Posted
+INV-80-ebebf01c-2383-11f0-bd9f-7a151d959370,ef6a210a-f50e-4242-82cd-ca09050306b4,Kathy,Anthony,KathyA@yahoo.com,"1918 Holly Curve Suite 239
+East Taylor, RI 53174",Subscription,2025-04-06,2025-05-06,1859.86,USD,Posted
+INV-83-ebec0462-2383-11f0-bd9f-7a151d959370,9895adcc-c029-40dd-b32c-5b82941a607d,Austin,Oneal,AustinO@outlook.com,"20583 Montes Fort Apt. 359
+Landrymouth, AK 58905",Product,2025-05-22,2025-05-18,1188.27,USD,Pending
+INV-84-ebec0fac-2383-11f0-bd9f-7a151d959370,729aeb04-abbc-4bab-b8a7-00817622a283,Stefanie,Whitehead,StefanieW@outlook.com,"621 Thomas Inlet
+West Michaelmouth, MH 45651",Product,2025-03-31,2025-04-30,3494.82,USD,Posted
+INV-85-ebec1a7e-2383-11f0-bd9f-7a151d959370,96b61aff-b7ce-4dcd-8a9a-58a1899254d2,Alexis,Martinez,AlexisM@gmail.com,"4774 Kim Island
+Michaelshire, IL 07585",Subscription,2025-04-09,2025-05-09,1554.93,USD,Posted
+INV-86-ebec24a6-2383-11f0-bd9f-7a151d959370,7c033651-7101-4670-8d6c-3bc64a27e583,Christine,Hill,ChristineH@outlook.com,"79575 Riley Estates Suite 386
+Millermouth, HI 16452",Consulting,2025-04-03,2025-05-03,1848.69,USD,Posted
+INV-87-ebec313a-2383-11f0-bd9f-7a151d959370,8bbdb5ff-e6da-49bc-8b64-75f2ced12a6d,Edward,Benson,EdwardB@gmail.com,"USNV Lopez
+FPO AP 61872",Training,2025-03-24,2025-04-23,926.13,USD,Late
+INV-88-ebec38d8-2383-11f0-bd9f-7a151d959370,da32eae5-2e7a-4a83-b5d2-aad1da668008,Jorge,Morris,JorgeM@outlook.com,"37913 Adam Mission Apt. 978
+Lisaland, AZ 70043",Subscription,2025-03-28,2025-04-27,3619.77,USD,Posted
+INV-89-ebec436e-2383-11f0-bd9f-7a151d959370,c57382cc-cf7a-4162-91e3-70649b82efdc,Matthew,Payne,MatthewP@gmail.com,"228 Harper Lakes
+North Joseph, AK 33854",Product,2025-03-23,2025-04-22,1154.07,USD,Late
+INV-90-ebec4d00-2383-11f0-bd9f-7a151d959370,aa26a13e-cbdc-40f7-a6af-951264e49669,Thomas,Hernandez,ThomasH@outlook.com,"219 Downs Square
+West Anita, MO 20844",Consulting,2025-04-11,2025-05-11,900.08,USD,Posted
+INV-91-ebec573c-2383-11f0-bd9f-7a151d959370,401ca952-462c-450e-97e6-a06602522f88,Brendan,Elliott,BrendanE@yahoo.com,"USNS Marks
+FPO AP 48247",Consulting,2025-03-26,2025-04-25,4252.59,USD,Late
+INV-92-ebec5e44-2383-11f0-bd9f-7a151d959370,446060b1-8d11-404f-8f02-74b4907fc6b8,Timothy,Simmons,TimothyS@outlook.com,"USNV Nunez
+FPO AA 19959",Consulting,2025-04-07,2025-05-07,4257.55,USD,Posted
+INV-93-ebec6628-2383-11f0-bd9f-7a151d959370,fc5e9f3a-5351-4e66-98e6-c9bc31d4aaa8,Jeffery,Wood,JefferyW@yahoo.com,"236 Kristina Pines Suite 397
+Port Catherine, AK 54388",Subscription,2025-04-03,2025-05-03,1301.07,USD,Pending
+INV-94-ebec6f56-2383-11f0-bd9f-7a151d959370,c8c07b9e-bb2e-4370-a708-444fb8084a72,Kayla,Williams,KaylaW@gmail.com,"8457 Mccoy Ports
+Christianmouth, IA 60710",Subscription,2025-03-24,2025-04-23,4688.44,USD,Late
+INV-95-ebec7848-2383-11f0-bd9f-7a151d959370,46894bbc-0863-4e7d-b1c4-6e8ed8312fdf,Rebecca,Jones,RebeccaJ@yahoo.com,"612 James Route Apt. 285
+Lake Karenville, RI 88149",Subscription,2025-04-12,2025-05-12,3494.8,USD,Posted
+INV-96-ebec8194-2383-11f0-bd9f-7a151d959370,71b895f6-0be5-4c92-ae41-535f44f0529b,Jennifer,Small,JenniferS@yahoo.com,"7257 Marvin Common
+New Jeffreyton, WY 76367",Product,2025-04-08,2025-05-08,,USD,Posted
+INV-97-ebec8c3e-2383-11f0-bd9f-7a151d959370,55b72b2c-7986-4c22-a009-54a9500d00b9,Jason,Hardy,JasonH@outlook.com,"2809 Brandy Harbors Suite 058
+Fowlerland, KS 04997",Subscription,2025-04-15,2025-05-15,4249.39,USD,Posted
+INV-98-ebec965c-2383-11f0-bd9f-7a151d959370,9ee01fee-ed9a-44b9-8b52-4b3ff625123e,Elizabeth,Martinez,ElizabethM@gmail.com,"7833 Christina Stravenue
+Scottside, FL 72413",Product,2025-04-13,2025-05-13,2732.4,USD,Posted
+INV-99-ebeca070-2383-11f0-bd9f-7a151d959370,f10e80dc-1408-4c7c-b0ec-e04168bcb2ec,Matthew,Love,MatthewL@yahoo.com,"591 Thomas Manor
+Matthewchester, NC 47692",Subscription,2025-03-27,2025-04-26,4325.54,USD,Late
+INV-100-ebeca980-2383-11f0-bd9f-7a151d959370,8db5acb1-b5ca-49be-a717-eee22c4087d5,Sonya,Robertson,SonyaR@outlook.com,"112 Mark Point
+Suarezberg, DE 87172",Training,2025-03-27,2025-04-26,2659.99,USD,Late
