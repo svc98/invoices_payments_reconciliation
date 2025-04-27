@@ -5,7 +5,7 @@ import pandas as pd
 from faker import Faker
 from datetime import datetime, timedelta
 
-fake = Faker(locale='en_US')                                                     # Library to generate fake data
+fake = Faker(locale='en_US')                                            # Library to generate fake data
 chaos_threshold = 0.025
 invoice_count = 100
 payment_count = 25
@@ -98,9 +98,7 @@ def invoices_payments_data_gen():
             "invoice_id": invoice['invoice_id'],
             "due_date": invoice['due_date'],
             "payment_date": payment_date.strftime("%Y-%m-%d"),
-            "amount_due": invoice['amount_due'],
-            "amount_paid": amount_paid,
-            "amount_remaining": round(invoice['amount_due'] - amount_paid, 2)
+            "amount_paid": amount_paid
         })
 
     # Step 4: Save payments to CSV

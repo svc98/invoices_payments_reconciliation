@@ -19,7 +19,8 @@ CREATE TABLE bronze_invoices (
     amount_due REAL,
     currency TEXT,
     status TEXT,
-    load_timestamp TEXT
+    load_timestamp TEXT,
+    is_cleaned INTEGER DEFAULT 0
 );
 
 CREATE TABLE bronze_payments (
@@ -27,10 +28,9 @@ CREATE TABLE bronze_payments (
     invoice_id TEXT,
     due_date TEXT,
     payment_date TEXT,
-    amount_due REAL,
     amount_paid REAL,
-    amount_remaining REAL,
-    load_timestamp TEXT
+    load_timestamp TEXT,
+    is_cleaned INTEGER DEFAULT 0
 );
 
 --------------------------------
@@ -41,30 +41,29 @@ DROP TABLE IF EXISTS silver_payments;
 CREATE TABLE silver_invoices (
     invoice_id TEXT PRIMARY KEY,
     customer_id TEXT,
+    first_name TEXT,
+    last_name TEXT,
+    customer_email TEXT,
+    customer_address TEXT,
     department TEXT,
     invoice_type TEXT,
     invoice_date TEXT,
     due_date TEXT,
     amount_due REAL,
     currency TEXT,
-    status TEXT,
-    load_timestamp TEXT
+    status TEXT
 );
 
 CREATE TABLE silver_payments (
     payment_id TEXT PRIMARY KEY,
     invoice_id TEXT,
+    due_date TEXT,
     payment_date TEXT,
+    amount_due REAL,
     amount_paid REAL,
-    amount_remaining REAL,
-    load_timestamp TEXT,
+    outstanding_balance REAL,
     FOREIGN KEY (invoice_id) REFERENCES silver_invoices(invoice_id)
 );
-
--- Indexes for faster queries
-CREATE INDEX IF NOT EXISTS idx_silver_invoices_customer_id ON silver_invoices(customer_id);
-CREATE INDEX IF NOT EXISTS idx_silver_payments_invoice_id ON silver_payments(invoice_id);
-
 
 --------------------------------
 -- GOLD LAYER: Analytical Tables
@@ -98,5 +97,10 @@ CREATE TABLE invoices (
     status TEXT,
     currency TEXT,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
-    FOREIGN KEY (department_name) REFERENCES departments(department_name)
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
+
+-- Indexes for faster queries
+CREATE INDEX IF NOT EXISTS idx_gold_invoices_invoice_id ON invoices(invoice_id);
+CREATE INDEX IF NOT EXISTS idx_gold_customers_customer_id ON customers(customer_id);
+CREATE INDEX IF NOT EXISTS idx_gold_departments_department_id ON departments(department_id);
