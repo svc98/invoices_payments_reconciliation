@@ -59,8 +59,6 @@ def invoices_payments_data_gen():
     print(str(invoice_count) + " invoices generated.")
 
     # Step 2: Save invoices to CSV
-    # Generate the timestamp suffix
-
     # Create the filename with the timestamp
     invoice_filename = f"data/raw/invoices_{timestamp}.csv"
     with open(invoice_filename, "w", newline="") as f:
@@ -72,8 +70,7 @@ def invoices_payments_data_gen():
     ## Payments Gen
     # Step 3: Generate payments randomly linked to the above invoices
     invoices_df = pd.DataFrame(invoices)
-    posted_df = invoices_df[(invoices_df['status'] == 'Posted') & (invoices_df['amount_due'].notnull())].reset_index(
-        drop=True)
+    posted_df = invoices_df[(invoices_df['status'] == 'Posted') & (invoices_df['amount_due'].notnull())].reset_index(drop=True)
     paid_df = posted_df.sample(n=payment_count, random_state=1).reset_index(drop=True)
     paid_records = paid_df.to_dict(orient='records')
 
@@ -98,6 +95,7 @@ def invoices_payments_data_gen():
             "invoice_id": invoice['invoice_id'],
             "due_date": invoice['due_date'],
             "payment_date": payment_date.strftime("%Y-%m-%d"),
+            "amount_due": invoice['amount_due'],
             "amount_paid": amount_paid
         })
 
