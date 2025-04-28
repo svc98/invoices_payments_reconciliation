@@ -5,17 +5,15 @@ import pandas as pd
 from faker import Faker
 from datetime import datetime, timedelta
 
-fake = Faker(locale='en_US')                                            # Library to generate fake data
-chaos_threshold = 0.025
-invoice_count = 100
-payment_count = 25
-timestamp = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")                         # for file outputting --> invoice_2025_04_25.csv
-invoices = []
+fake = Faker(locale='en_US')                                                     # Library to generate fake data
+timestamp = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")                         # for file outputting --> invoice_2025_04_25_01_01_01.csv
 
-def invoices_payments_data_gen():
+
+def invoices_payments_data_gen(chaos_threshold: str, invoice_count: str, payment_count: str) -> None:
     ## Invoices Gen
     # Step 1: Generate invoices
-    for i in range(1, invoice_count + 1):
+    invoices = []
+    for i in range(1, int(invoice_count) + 1):
         first_name = fake.first_name()
         last_name = fake.last_name()
         invoice_date = fake.date_between(start_date="-35d", end_date="-7d")
@@ -25,15 +23,15 @@ def invoices_payments_data_gen():
         status = random.choices(["Posted", "Pending", "Processing", "Canceled"], weights=[0.7, 0.1, 0.15, 0.05])[0]
 
         # Random add Missing Values
-        if status == 'Posted' and random.random() <= chaos_threshold:
+        if status == 'Posted' and random.random() <= float(chaos_threshold):
             amount_due = None
 
         # Randomly add future dates
-        if status == 'Pending' and random.random() <= chaos_threshold:
+        if status == 'Pending' and random.random() <= float(chaos_threshold):
             invoice_date = current_date + timedelta(days=random.randint(7, 30))
 
         # Create invoice & randomly add duplicates
-        if invoices and random.random() <= chaos_threshold:
+        if invoices and random.random() <= float(chaos_threshold):
             invoices.append(invoices[-1])
         else:
             ## Final Checks
@@ -71,7 +69,7 @@ def invoices_payments_data_gen():
     # Step 3: Generate payments randomly linked to the above invoices
     invoices_df = pd.DataFrame(invoices)
     posted_df = invoices_df[(invoices_df['status'] == 'Posted') & (invoices_df['amount_due'].notnull())].reset_index(drop=True)
-    paid_df = posted_df.sample(n=payment_count, random_state=1).reset_index(drop=True)
+    paid_df = posted_df.sample(n=int(payment_count), random_state=1).reset_index(drop=True)
     paid_records = paid_df.to_dict(orient='records')
 
     payments = []

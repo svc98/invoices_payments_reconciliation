@@ -1,48 +1,51 @@
 import os
+import sqlite3
 import pandas as pd
 from datetime import datetime
 
 
-def load_csv_to_df(path):
+def load_csv_to_df(path: str) -> pd.DataFrame:
     # Read path and add load timestamp for historical purpose.
-    df = pd.read_csv(path)
-    df["load_timestamp"] = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
-    return df
+    try:
+        df = pd.read_csv(path)
+        df["load_timestamp"] = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        return df
+    except Exception as e:
+        print(f"Error: Couldn't load CSV at {path}: {e}")
+        return pd.DataFrame()  # Return empty DataFrame on error
 
-def insert_data(conn, cursor, df, table_name, id_column):
-    # Get existing IDs already in the table. Bio O on Set lookup is faster, than list.
-    existing_ids = set(row[0] for row in cursor.execute(f"SELECT {id_column} FROM {table_name};"))
+def insert_data(conn: sqlite3.Connection, df: pd.DataFrame, table_name: str) -> None:
+    try:
+        # Directly insert the DataFrame into the bronze table without checking existing IDs
+        if len(df) > 0:
+            df.to_sql(table_name, conn, if_exists='append', index=False)
+            print(f"Inserted {len(df)} records into {table_name}.")
+        else:
+            print(f"No new records to insert into {table_name}.")
+    except Exception as e:
+        print(f"Error: Couldnt inserting data into {table_name}: {e}")
 
-    # Filter the raw DataFrame to only new IDs via filter masking.
-    new_df = df[~df[id_column].isin(existing_ids)]
-
-    # Either insert filtered df into db or is an empty df.
-    if len(new_df) > 0:
-        new_df.to_sql(table_name, conn, if_exists='append', index=False)
-        print(f"Inserted {len(new_df)} new records into {table_name}.")
-    else:
-        print(f"No new records to insert into {table_name}.")
-
-def process_file(conn, cursor, file_path):
+def process_file(conn: sqlite3.Connection, cursor: sqlite3.Cursor, file_path: str) -> None:
     # Identify which file (invoice or payment) to load
     if "invoices" in file_path:
         table_name = "bronze_invoices"
-        id_column = "invoice_id"
     elif "payments" in file_path:
         table_name = "bronze_payments"
-        id_column = "payment_id"
     else:
         print(f"Skipping unrecognized file: {file_path}")
         return
 
     # Load raw data into DataFrame
     df = load_csv_to_df(file_path)
-    insert_data(conn, cursor, df, table_name, id_column)
+    if not df.empty:
+        insert_data(conn, df, table_name)
+    else:
+        print(f"Skipping empty file: {file_path}")
 
 
 
 ##### Main Functions #####
-def check_or_create_tables(conn, cursor, TABLE_SETUP_PATH, expected_tables):
+def check_or_create_tables(conn: sqlite3.Connection, cursor: sqlite3.Cursor, TABLE_SETUP_PATH: str, expected_tables: list[str]) -> None:
     # Iterate through SQLite tables and grab table name
     existing_tables = [row[0] for row in cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")]
     check = all(table.lower() in existing_tables for table in expected_tables)
@@ -56,14 +59,14 @@ def check_or_create_tables(conn, cursor, TABLE_SETUP_PATH, expected_tables):
     else:
         print("Schema already exists. Skipping creation.")
 
-def ingestion_start(conn, cursor, RAW_DATA_FOLDER, DB_PATH, TABLE_SETUP_PATH):
+def ingestion_start(conn: sqlite3.Connection, cursor: sqlite3.Cursor, RAW_DATA_FOLDER: str, DB_PATH: str, TABLE_SETUP_PATH: str) -> None:
     # Check paths
     if not os.path.exists(RAW_DATA_FOLDER):
-        raise FileNotFoundError(f"{RAW_DATA_FOLDER} not found.")
+        raise FileNotFoundError(f"Error: {RAW_DATA_FOLDER} not found.")
     elif not os.path.exists(DB_PATH):
-        raise FileNotFoundError(f"{DB_PATH} not found.")
+        raise FileNotFoundError(f"Error: {DB_PATH} not found.")
     elif not os.path.exists(TABLE_SETUP_PATH):
-        raise FileNotFoundError(f"{TABLE_SETUP_PATH} not found.")
+        raise FileNotFoundError(f"Error: {TABLE_SETUP_PATH} not found.")
 
     # Load raw CSV files into DataFrames
     for filename in os.listdir(RAW_DATA_FOLDER):

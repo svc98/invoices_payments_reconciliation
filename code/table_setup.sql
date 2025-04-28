@@ -28,6 +28,7 @@ CREATE TABLE bronze_payments (
     invoice_id TEXT,
     due_date TEXT,
     payment_date TEXT,
+    amount_due REAL,
     amount_paid REAL,
     load_timestamp TEXT,
     is_cleaned INTEGER DEFAULT 0
@@ -51,7 +52,8 @@ CREATE TABLE silver_invoices (
     due_date TEXT,
     amount_due REAL,
     currency TEXT,
-    status TEXT
+    status TEXT,
+    is_cleaned INTEGER DEFAULT 0
 );
 
 CREATE TABLE silver_payments (
@@ -62,6 +64,7 @@ CREATE TABLE silver_payments (
     amount_due REAL,
     amount_paid REAL,
     outstanding_balance REAL,
+    is_cleaned INTEGER DEFAULT 0,
     FOREIGN KEY (invoice_id) REFERENCES silver_invoices(invoice_id)
 );
 
