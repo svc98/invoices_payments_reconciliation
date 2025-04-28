@@ -4,7 +4,8 @@ import shutil
 import sqlite3
 from code.invoice_payment_gen import invoices_payments_data_gen
 from code.bronze_logic import ingestion_start, check_or_create_tables
-from code.silver_logic import clean_enrich_bronze
+from code.silver_logic import move_bronze_to_silver
+from code.gold_logic import move_silver_to_gold
 
 # Load environment variables
 load_dotenv('variables.env')
@@ -14,12 +15,14 @@ RAW_DATA_FOLDER = os.getenv('RAW_DATA_FOLDER')
 PROCESSED_FOLDER = os.getenv('PROCESSED_FOLDER')
 DB_PATH = os.getenv('DB_PATH')
 TABLE_SETUP_PATH = os.getenv('TABLE_SETUP_PATH')
+DEPARTMENT_MAPPINGS_PATH = os.getenv('DEPARTMENT_MAPPINGS_PATH')
 expected_tables = ["bronze_invoices", "bronze_payments", "silver_invoices", "silver_payments", "customers", "departments", "invoices"]
 
 # Data Gen
 chaos_threshold = os.getenv('CHAOS_THRESHOLD')
 invoice_count = os.getenv('INVOICE_COUNT')
 payment_count = os.getenv('PAYMENT_COUNT')
+
 
 def generate_invoices_payments_data() -> None:
     """
@@ -131,7 +134,36 @@ def move_new_bronze_records_to_silver() -> None:
         cursor = conn.cursor()
 
         # Clean and Enrich bronze records in order to move to Silver
-        clean_enrich_bronze(conn, cursor)
+        move_bronze_to_silver(conn, cursor)
+        print("------")
+
+    except sqlite3.Error as e:
+        print(f"Error: SQLite error in move_new_bronze_records_to_silver: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        # Ensure connection is closed even if there's an error
+        if conn:
+            conn.close()
+
+def move_new_silver_records_to_gold() -> None:
+    """
+    Move newly processed silver records to the gold layer.
+
+    This function iterates through the silver layer for records with is_cleaned = 0. Then extracts and sends the data to their
+          respective tables. (Customer, Department, Invoices and Payments)
+    It utilizes a department mappings JSON file to map department names correctly during the transfer.
+    If any errors occur during the process, they are caught and printed.
+    """
+
+    conn = None                                              # In case something happens in the middle of the try block.
+    try:
+        # Create DB connection and cursor
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        # Run the function to move data from silver to gold
+        move_silver_to_gold(conn, cursor, DEPARTMENT_MAPPINGS_PATH)
         print("------")
 
     except sqlite3.Error as e:
@@ -170,3 +202,6 @@ if __name__ == "__main__":
 
     # Bronze to Silver.
     move_new_bronze_records_to_silver()
+
+    # Silver to Gold.
+    move_new_silver_records_to_gold()

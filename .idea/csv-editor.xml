@@ -10,7 +10,35 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/data/processed/invoices_2025_04_28_11_44_16.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/processed/invoices_2025_04_28_17_33_52.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/data/processed/payments_2025_04_28_09_42_50.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/processed/payments_2025_04_28_17_33_52.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/processed/payments_2025_04_28_17_40_12.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -12,7 +12,6 @@ CREATE TABLE bronze_invoices (
     last_name TEXT,
     customer_email TEXT,
     customer_address TEXT,
-    department TEXT,
     invoice_type TEXT,
     invoice_date TEXT,
     due_date TEXT,
@@ -46,7 +45,6 @@ CREATE TABLE silver_invoices (
     last_name TEXT,
     customer_email TEXT,
     customer_address TEXT,
-    department TEXT,
     invoice_type TEXT,
     invoice_date TEXT,
     due_date TEXT,
@@ -85,7 +83,7 @@ CREATE TABLE customers (
 
 -- Departments Table
 CREATE TABLE departments (
-    department_id TEXT PRIMARY KEY,
+    department_id INTEGER PRIMARY KEY AUTOINCREMENT,
     department_name TEXT
 );
 
@@ -100,8 +98,8 @@ CREATE TABLE invoices (
     amount_due REAL,
     amount_paid REAL,
     balance REAL,
-    status TEXT,
     currency TEXT,
+    status TEXT,
     created_at TEXT,
     updated_at TEXT,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
@@ -122,3 +120,7 @@ CREATE INDEX IF NOT EXISTS idx_gold_invoices_invoice_id ON invoices(invoice_id);
 CREATE INDEX IF NOT EXISTS idx_gold_customers_customer_id ON customers(customer_id);
 CREATE INDEX IF NOT EXISTS idx_gold_departments_department_id ON departments(department_id);
 CREATE INDEX IF NOT EXISTS idx_gold_payments_invoice_id ON payments(invoice_id);
+
+-- Insert Department values
+INSERT INTO departments (department_name)
+VALUES ('Sales'), ('Professional Services'),('HR'),('IT'),('Customer Success');

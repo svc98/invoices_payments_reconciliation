@@ -10,10 +10,12 @@ timestamp = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")                        
 
 
 def invoices_payments_data_gen(chaos_threshold: str, invoice_count: str, payment_count: str) -> None:
+    print("Data Gen started")
+
     ## Invoices Gen
     # Step 1: Generate invoices
     invoices = []
-    for i in range(1, int(invoice_count) + 1):
+    for i in range(1, int(invoice_count)+1):
         invoice_id = f"INV-{i}-{uuid.uuid1()}"
         customer_id = str(uuid.uuid4())
         first_name = fake.first_name()
@@ -36,7 +38,7 @@ def invoices_payments_data_gen(chaos_threshold: str, invoice_count: str, payment
             invoice_date = current_date + timedelta(days=random.randint(7, 30))
 
         # Randomly generate another Invoice for existing customer.
-        if invoices and random.random() <= float(chaos_threshold) + 0.075:
+        if invoices and random.random() <= float(chaos_threshold) + 0.05:
             existing = random.choice(invoices)
             customer_id = existing['customer_id']
             first_name = existing['first_name']
@@ -47,6 +49,7 @@ def invoices_payments_data_gen(chaos_threshold: str, invoice_count: str, payment
         # Randomly add duplicates row
         if invoices and random.random() <= float(chaos_threshold):
             invoices.append(invoices[-1])
+            continue
 
         ## Final Checks
         # Set Late status on current date past the due date.

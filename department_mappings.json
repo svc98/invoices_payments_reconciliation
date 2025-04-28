@@ -1,0 +1,7 @@
+{
+  "Sales": ["Subscription", "Product"],
+  "Professional Services": ["Consulting"],
+  "HR": ["Training"],
+  "IT": ["Maintenance"],
+  "Customer Success": ["Onboarding"]
+}
