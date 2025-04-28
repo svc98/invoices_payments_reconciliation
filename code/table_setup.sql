@@ -63,7 +63,6 @@ CREATE TABLE silver_payments (
     payment_date TEXT,
     amount_due REAL,
     amount_paid REAL,
-    outstanding_balance REAL,
     is_cleaned INTEGER DEFAULT 0,
     FOREIGN KEY (invoice_id) REFERENCES silver_invoices(invoice_id)
 );
@@ -72,8 +71,10 @@ CREATE TABLE silver_payments (
 -- GOLD LAYER: Analytical Tables
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS departments;
-DROP TABLE IF EXISTS gold_invoice_summary;
+DROP TABLE IF EXISTS invoices;
+DROP TABLE IF EXISTS payments;
 
+-- Customers Table
 CREATE TABLE customers (
     customer_id TEXT PRIMARY KEY,
     first_name TEXT,
@@ -82,11 +83,13 @@ CREATE TABLE customers (
     customer_address TEXT
 );
 
+-- Departments Table
 CREATE TABLE departments (
     department_id TEXT PRIMARY KEY,
     department_name TEXT
 );
 
+-- Invoices Table
 CREATE TABLE invoices (
     invoice_id TEXT PRIMARY KEY,
     customer_id TEXT,
@@ -96,14 +99,26 @@ CREATE TABLE invoices (
     due_date TEXT,
     amount_due REAL,
     amount_paid REAL,
-    amount_remaining REAL,
+    balance REAL,
     status TEXT,
     currency TEXT,
+    created_at TEXT,
+    updated_at TEXT,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+-- Payments Table
+CREATE TABLE payments (
+    payment_id TEXT PRIMARY KEY,
+    invoice_id TEXT,
+    payment_date TEXT,
+    amount_paid REAL,
+    FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id)
 );
 
 -- Indexes for faster queries
 CREATE INDEX IF NOT EXISTS idx_gold_invoices_invoice_id ON invoices(invoice_id);
 CREATE INDEX IF NOT EXISTS idx_gold_customers_customer_id ON customers(customer_id);
 CREATE INDEX IF NOT EXISTS idx_gold_departments_department_id ON departments(department_id);
+CREATE INDEX IF NOT EXISTS idx_gold_payments_invoice_id ON payments(invoice_id);

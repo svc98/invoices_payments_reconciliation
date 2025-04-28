@@ -3,7 +3,8 @@ from dotenv import load_dotenv
 import shutil
 import sqlite3
 from code.invoice_payment_gen import invoices_payments_data_gen
-from code.ingest_raw_files import ingestion_start, check_or_create_tables
+from code.bronze_logic import ingestion_start, check_or_create_tables
+from code.silver_logic import clean_enrich_bronze
 
 # Load environment variables
 load_dotenv('variables.env')
@@ -113,9 +114,37 @@ def ingest_new_files_to_bronze() -> None:
         if conn:
             conn.close()
 
+def move_new_bronze_records_to_silver() -> None:
+    """
+    Move newly processed bronze records to the silver table.
+
+    This function cleans and enriches the records in the bronze layer and moves them to the silver layer for further processing.
+    "is_cleaned" = 0 is used to determine if a records hasn't been processed/load into silver layer. Default is 0.
+    "is_cleaned" = 1 is used to determine if it has.
+    Any errors encountered during the process are printed.
+    """
+
+    conn = None                                              # In case something happens in the middle of the try block.
+    try:
+        # Create DB connection and cursor
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+
+        # Clean and Enrich bronze records in order to move to Silver
+        clean_enrich_bronze(conn, cursor)
+        print("------")
+
+    except sqlite3.Error as e:
+        print(f"Error: SQLite error in move_new_bronze_records_to_silver: {e}")
+    except Exception as e:
+        print(f"Error: {e}")
+    finally:
+        # Ensure connection is closed even if there's an error
+        if conn:
+            conn.close()
 
 
-##### Main #####
+
 if __name__ == "__main__":
     """
     Main entry point for the data processing pipeline.
@@ -138,3 +167,6 @@ if __name__ == "__main__":
 
     # Ingest files from data/raw folder into bronze, then move files to data/processed folder.
     ingest_new_files_to_bronze()
+
+    # Bronze to Silver.
+    move_new_bronze_records_to_silver()

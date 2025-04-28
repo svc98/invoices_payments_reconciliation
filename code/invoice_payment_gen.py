@@ -14,14 +14,19 @@ def invoices_payments_data_gen(chaos_threshold: str, invoice_count: str, payment
     # Step 1: Generate invoices
     invoices = []
     for i in range(1, int(invoice_count) + 1):
+        invoice_id = f"INV-{i}-{uuid.uuid1()}"
+        customer_id = str(uuid.uuid4())
         first_name = fake.first_name()
         last_name = fake.last_name()
+        customer_email = first_name + last_name[0] + random.choice(["@yahoo.com", "@gmail.com", "@outlook.com"])
+        customer_address = fake.address()
         invoice_date = fake.date_between(start_date="-35d", end_date="-7d")
         due_date = invoice_date + timedelta(days=30)
         current_date = datetime.today().date()
         amount_due = round(random.uniform(100, 5000), 2)
         status = random.choices(["Posted", "Pending", "Processing", "Canceled"], weights=[0.7, 0.1, 0.15, 0.05])[0]
 
+        ## Random
         # Random add Missing Values
         if status == 'Posted' and random.random() <= float(chaos_threshold):
             amount_due = None
@@ -30,29 +35,39 @@ def invoices_payments_data_gen(chaos_threshold: str, invoice_count: str, payment
         if status == 'Pending' and random.random() <= float(chaos_threshold):
             invoice_date = current_date + timedelta(days=random.randint(7, 30))
 
-        # Create invoice & randomly add duplicates
+        # Randomly generate another Invoice for existing customer.
+        if invoices and random.random() <= float(chaos_threshold) + 0.075:
+            existing = random.choice(invoices)
+            customer_id = existing['customer_id']
+            first_name = existing['first_name']
+            last_name = existing['last_name']
+            customer_email = existing['customer_email']
+            customer_address = existing['customer_address']
+
+        # Randomly add duplicates row
         if invoices and random.random() <= float(chaos_threshold):
             invoices.append(invoices[-1])
-        else:
-            ## Final Checks
-            # Set Late status on current date past the due date.
-            if current_date > due_date:
-                status = "Late"
 
-            invoices.append({
-                "invoice_id": f"INV-{i}-{uuid.uuid1()}",
-                'customer_id': str(uuid.uuid4()),
-                "first_name": first_name,
-                "last_name": last_name,
-                "customer_email": first_name + last_name[0] + random.choice(["@yahoo.com", "@gmail.com", "@outlook.com"]),
-                "customer_address": fake.address(),
-                "invoice_type": random.choices(['Subscription', 'Product', 'Consulting', 'Training', 'Maintenance', 'Onboarding'], weights=[0.25, 0.25, 0.25, 0.1, 0.05, 0.05])[0],
-                "invoice_date": invoice_date.strftime("%Y-%m-%d"),
-                "due_date": due_date.strftime("%Y-%m-%d"),
-                "amount_due": amount_due,
-                "currency": "USD",
-                "status": status
-            })
+        ## Final Checks
+        # Set Late status on current date past the due date.
+        if current_date > due_date:
+            status = "Late"
+
+        # Create invoice:
+        invoices.append({
+            "invoice_id": invoice_id,
+            'customer_id': customer_id,
+            "first_name": first_name,
+            "last_name": last_name,
+            "customer_email": customer_email,
+            "customer_address": customer_address,
+            "invoice_type": random.choices(['Subscription', 'Product', 'Consulting', 'Training', 'Maintenance', 'Onboarding'], weights=[0.25, 0.25, 0.25, 0.1, 0.05, 0.05])[0],
+            "invoice_date": invoice_date.strftime("%Y-%m-%d"),
+            "due_date": due_date.strftime("%Y-%m-%d"),
+            "amount_due": amount_due,
+            "currency": "USD",
+            "status": status
+        })
 
     print(str(invoice_count) + " invoices generated.")
 
