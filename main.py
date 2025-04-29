@@ -95,7 +95,10 @@ def ingest_new_files_to_bronze() -> None:
             conn = sqlite3.connect(DB_PATH)
             cursor = conn.cursor()
 
+            # Move raw files into SQLite DB bronze layer
             ingestion_start(conn, cursor, RAW_DATA_FOLDER, DB_PATH, TABLE_SETUP_PATH)
+
+            # Move processed files to /data/processed folder
             for filename in files_to_process:
                 full_path = os.path.join(RAW_DATA_FOLDER, filename)
                 shutil.move(full_path, os.path.join(PROCESSED_FOLDER, filename))

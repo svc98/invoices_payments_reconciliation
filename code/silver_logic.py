@@ -27,6 +27,7 @@ def move_bronze_to_silver(conn: sqlite3.Connection, cursor: sqlite3.Cursor) -> N
         bronze_payments = cursor.fetchall()
 
         # Step 2: Process bronze_invoices and insert into silver_invoices
+        invoice_ids = []
         for invoice in bronze_invoices:
             invoice_id, customer_id, first_name, last_name, customer_email, customer_address, invoice_type, invoice_date, due_date, amount_due, currency, status, load_timestamp, is_cleaned = invoice
 
@@ -65,11 +66,12 @@ def move_bronze_to_silver(conn: sqlite3.Connection, cursor: sqlite3.Cursor) -> N
             """, (invoice_id, customer_id, first_name, last_name, customer_email, customer_address,
                   invoice_type, invoice_date, due_date, amount_due, currency, status, invoice_id))
 
-            # Update is_cleaned to 1 for the current invoice. Update row counter.
-            cursor.execute("UPDATE bronze_invoices SET is_cleaned = 1 WHERE invoice_id = ?", (invoice_id,))
+            # Add to Batch. Update row counter.
+            invoice_ids.append(invoice_id)
             invoices_moved_to_silver += 1
 
         # Step 3: Process bronze_payments and insert into silver_payments
+        payment_ids = []
         for payment in bronze_payments:
             payment_id, invoice_id, due_date, payment_date, amount_due, amount_paid, load_timestamp, is_cleaned = payment
 
@@ -104,11 +106,30 @@ def move_bronze_to_silver(conn: sqlite3.Connection, cursor: sqlite3.Cursor) -> N
             WHERE NOT EXISTS (SELECT 1 FROM silver_payments WHERE payment_id = ?)
             """, (payment_id, invoice_id, due_date, payment_date, amount_due, amount_paid, payment_id))
 
-            # Update is_cleaned to 1 for the current payment. Update row counter.
-            cursor.execute("UPDATE bronze_payments SET is_cleaned = 1 WHERE payment_id = ?", (payment_id,))
+            # Add to Batch. Update row counter.
+            payment_ids.append(payment_id)
             payments_moved_to_silver += 1
 
-        # Step 4: Commit the changes to the database
+        # Step 4: Batch Update is_cleaned to 1 for the new invoice and payments. Need to create placeholder list b/c needs to have dynamic '?'s.
+        if invoice_ids:
+            placeholders = ','.join(['?'] * len(invoice_ids))
+            cursor.execute(f"""
+                UPDATE bronze_invoices 
+                SET is_cleaned = 1 
+                WHERE invoice_id IN ({placeholders}) 
+                    AND is_cleaned = 0
+            """, invoice_ids)
+
+        if payment_ids:
+            placeholders = ','.join(['?'] * len(payment_ids))
+            cursor.execute(f"""
+                UPDATE bronze_payments 
+                SET is_cleaned = 1 
+                WHERE payment_id IN ({placeholders}) 
+                    AND is_cleaned = 0
+            """, payment_ids)
+
+        # Step 5: Commit the changes to the database
         conn.commit()
         print(f"Inserted {invoices_moved_to_silver} invoices and {payments_moved_to_silver} payments into Silver Layer")
 

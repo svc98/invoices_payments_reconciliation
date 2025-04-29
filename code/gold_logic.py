@@ -78,15 +78,18 @@ def insert_into_gold_invoices(cursor: sqlite3.Cursor, invoice_id: str, customer_
             # Current Time
             now = str(datetime.now().strftime("%m-%d-%Y-%H-%M-%S"))
 
+            # Create Simple Partition Key on Month (Currently all the records are either from 03/March or 04/April)
+            partition_key = invoice_date.split("-")[0]
+
             # Prepare SQL for insertion
             cursor.execute("""
                 INSERT INTO invoices (
                     invoice_id, customer_id, department_id, invoice_type, invoice_date, due_date, 
-                    amount_due, amount_paid, balance, currency, status, created_at, updated_at
+                    amount_due, amount_paid, balance, currency, status, created_at, updated_at, partition_key
                 )
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (invoice_id, customer_id, department_id, invoice_type, invoice_date, due_date,
-                  safe_float(amount_due), safe_float(amount_paid), safe_float(balance), currency, status, now, now))
+                  safe_float(amount_due), safe_float(amount_paid), safe_float(balance), currency, status, now, now, partition_key))
     except sqlite3.Error as e:
         print(f"Database error in insert_into_gold_invoices: {e}")
     except Exception as e:
@@ -127,10 +130,10 @@ def move_silver_to_gold(conn: sqlite3.Connection, cursor: sqlite3.Cursor, DEPART
         invoices_moved_to_gold = 0
         payments_moved_to_gold = 0
 
-        # Select data from silver_invoices
+        # Step 1: Select data from silver_invoices
         cursor.execute("SELECT * FROM silver_invoices WHERE is_cleaned = 0")
         silver_invoices = cursor.fetchall()
-
+        invoice_ids = []
 
         for invoice in silver_invoices:
             # Grab invoice values
@@ -146,14 +149,14 @@ def move_silver_to_gold(conn: sqlite3.Connection, cursor: sqlite3.Cursor, DEPART
             insert_into_gold_invoices(cursor, invoice_id, customer_id, department_id, invoice_type, invoice_date, due_date,
                                       amount_due, 0.0, amount_due, currency, status)
 
-            # Update is_cleaned to 1 for the current invoice. Update row counter.
-            cursor.execute("UPDATE silver_invoices SET is_cleaned = 1 WHERE invoice_id = ?", (invoice_id,))
+            # Add to Batch. Update row counter.
+            invoice_ids.append(invoice_id)
             invoices_moved_to_gold += 1
 
-        # Select data from silver_payments
+        # Step 2: Select data from silver_payments
         cursor.execute("SELECT * FROM silver_payments WHERE is_cleaned = 0")
         silver_payments = cursor.fetchall()
-
+        payment_ids = []
         for payment in silver_payments:
             # Grab payment values
             payment_id, invoice_id, due_date, payment_date, amount_due, amount_paid, is_cleaned = payment
@@ -161,11 +164,31 @@ def move_silver_to_gold(conn: sqlite3.Connection, cursor: sqlite3.Cursor, DEPART
             # Insert or update the payment in gold layer
             insert_into_gold_payments(cursor, payment_id, invoice_id, payment_date, amount_due, amount_paid)
 
-            # Update is_cleaned to 1 for the current invoice. Update row counter.
-            cursor.execute("UPDATE silver_payments SET is_cleaned = 1 WHERE payment_id = ?", (payment_id,))
+            # Add to Batch. Update row counter.
+            payment_ids.append(payment_id)
             payments_moved_to_gold += 1
 
-        # Commit transaction to the database
+        # Step 3: Batch Update is_cleaned to 1 for the new invoice and payments. Need to create placeholder list b/c needs to have dynamic '?'s.
+        if invoice_ids:
+            placeholders = ','.join(['?'] * len(invoice_ids))
+            cursor.execute(f"""
+                UPDATE bronze_invoices 
+                SET is_cleaned = 1 
+                WHERE invoice_id IN ({placeholders}) 
+                    AND is_cleaned = 0
+            """, invoice_ids)
+
+        if payment_ids:
+            placeholders = ','.join(['?'] * len(payment_ids))
+            cursor.execute(f"""
+                UPDATE silver_payments 
+                SET is_cleaned = 1 
+                WHERE payment_id IN ({placeholders}) 
+                    AND is_cleaned = 0
+            """, payment_ids)
+
+
+        # Step 4: Commit transaction to the database
         conn.commit()
         print(f"Inserted {invoices_moved_to_gold} invoices and {payments_moved_to_gold} payments into Gold Layer")
 

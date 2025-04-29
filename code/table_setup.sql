@@ -102,6 +102,7 @@ CREATE TABLE invoices (
     status TEXT,
     created_at TEXT,
     updated_at TEXT,
+    partition_key TEXT,
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );

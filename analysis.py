@@ -16,6 +16,7 @@ try:
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
+
     # ----------------
     # Question 1: What are the top 5 customers by total amount paid? (SQL)
     # ----------------
@@ -25,7 +26,9 @@ try:
     query1 = """
     SELECT 
         c.first_name || ' ' || c.last_name AS customer_name,
-        SUM(p.amount_paid) AS total_paid
+        SUM(p.amount_paid) AS total_paid,
+        COUNT(i.invoice_id) as invoices,
+        ROUND(SUM(p.amount_paid) / COUNT(i.invoice_id), 2) as average_per_invoice
     FROM payments p
     JOIN invoices i ON p.invoice_id = i.invoice_id
     JOIN customers c ON i.customer_id = c.customer_id
@@ -52,7 +55,7 @@ try:
     query2 = """
     WITH classified_invoices as (
         SELECT
-            *,
+            invoice_id, customer_id, department_id, invoice_type, invoice_date, due_date, amount_due, amount_paid, balance, status,
             CASE 
                 WHEN balance > 0 THEN 'under_paid'
                 WHEN balance = 0 THEN 'exact_paid'
@@ -62,7 +65,7 @@ try:
         WHERE status IN ('Posted', 'Pending', 'Processing', 'Late')                           -- Exclude Cancelled invoices
     )
     
-    SELECT invoice_payment_status, SUM(balance) as amount, COUNT(invoice_id) as count
+    SELECT invoice_payment_status, CAST(SUM(balance) AS BIGINT) as outstanding_balance, COUNT(invoice_id) as count
     FROM classified_invoices
     GROUP BY invoice_payment_status
     ORDER BY 3 DESC;

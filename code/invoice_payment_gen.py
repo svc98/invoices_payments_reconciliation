@@ -10,7 +10,7 @@ timestamp = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")                        
 
 
 def invoices_payments_data_gen(chaos_threshold: str, invoice_count: str, payment_count: str) -> None:
-    print("Data Gen started")
+    print("Data Gen started: please wait 20 seconds")
 
     ## Invoices Gen
     # Step 1: Generate invoices
